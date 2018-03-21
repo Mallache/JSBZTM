@@ -1,6 +1,7 @@
 //获取应用实例
 var app = getApp()
 const SERVER = require('../../utils/leancloud-storage');
+var util = require('../../utils/util.js');
 
 Page({
   data: {
@@ -32,7 +33,7 @@ Page({
     }
     //判断用户是否注册过
     new SERVER.Query('UserInfo')
-      .query.equalTo('name', this.data.userName)      // 查询条件
+      .equalTo('name', this.data.userName)      // 查询条件
       .find()
       .then(users => {
         //判定是否已经注册过
@@ -52,19 +53,27 @@ Page({
           })
           return
         }
-        wx.navigateBack({
-          url:'/dealingTask/index'
+        console.log("登录")
+        wx.switchTab({
+          url:'../dealingTask/index',
+          success: function (e) {
+            console.log(e)},
+            fail:function(e){
+              console.log("失败")
+            }
         })
+        console.log("hh登录")
       })
       .catch(console.error);
+ 
   },
 
   //注册按钮
-  bindtapRegister(){
+  /*bindtapRegister(){
     wx.navigateTo({
       url: '../register/index',
     })
-  },
+  },*/
   
   //输入框事件
   bindinputUserName: function (e) {
