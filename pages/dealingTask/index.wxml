@@ -1,0 +1,12 @@
+<view class="page_btn">
+  <button class="page_btn_drive" bindtap="bindCreatBtnTap" disabled="{{btn_disabled}}" hover-class="btn_tap">创建任务</button>
+</view>
+<view class="index-bd padding-mod">
+  <view class="kind-list padding-mod">
+    <block wx:for="{{tasks}}" wx:for-item="task" wx:key="task.name" >
+      <navigator url="../../pages/task/detail/detail?name={{task.name}}&describe={{task.describe}}&respPerson={{task.respPerson}}&planComplTime={{task.planComplTime}}" class="navigator">
+        <view bindlongpress='bindtapDel' class="navigator-text" id="{{task.objectId}}"> {{task.name}}</view>
+      </navigator>
+    </block>
+  </view>
+</view>

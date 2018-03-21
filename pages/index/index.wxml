@@ -1,0 +1,14 @@
+<!--pages/index/index.wxml-->
+<view class="logo" style="text-align:center">   
+  <image class="logo-img" src="../../image/logo.jpg" mode='aspectFit'></image>
+</view>
+<view class="page_btn">
+    <button class="page_btn_register" bindtap="bindRegisterBtnTap" disabled="{{btn_disabled}}" hover-class="btn_tap">注   册</button>
+    <button class="page_btn_login"  bindtap="bindLoginBtnTap" disabled="{{btn_disabled}}" hover-class="btn_tap">登   录</button>
+</view>
+
+<view class="page__ft" style="position: fixed;  bottom: .52em;  left: 0;  right: 0;">
+  <view class='text_ft' style="color: #999999; font-size: 14px; text-align: center;">v0.1.0 体验版</view>
+  <view class='text_ft' style="color: #999999; font-size: 14px; text-align: center;">Copyright © 中国农业银行软件开发中心</view>
+  <view class='text_ft' style="color: #999999; font-size: 14px; text-align: center;">说明：本版为内测版</view>
+</view>

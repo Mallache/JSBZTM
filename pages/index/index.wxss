@@ -1,0 +1,29 @@
+/* pages/index/index.wxss */
+.logo{
+  margin-top: 80px;
+}
+
+.page_btn{
+  margin-top: 60px;
+  display: flex
+}
+
+.page_btn_register{
+  width: 40%;
+  margin-left: 25px;
+  font-size: 20px;
+  background-color:#66cc99;
+  color:white;
+}
+
+.page_btn_login{
+  width: 40%;
+  margin-right: 25px;
+  font-size: 20px;
+  background-color:#66cc99;
+  color:white;
+}
+
+.btn_tap{
+  background-color:#339966;
+}

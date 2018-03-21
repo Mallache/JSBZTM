@@ -1,0 +1,15 @@
+/* pages/login/index.wxss */
+@import "../common/weui.wxss";
+
+.usermotto {
+  margin-top: 20px;
+}
+.usermotto input{
+  color: #000;
+  margin-bottom: 10px;
+  background-color: gainsboro;
+}
+
+.abcBtn{
+  border-top: 10rpx solid #D9D9D9;
+}

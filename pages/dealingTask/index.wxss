@@ -1,0 +1,5 @@
+@import "../common/index.wxss";
+
+.padding-mod{
+  padding: 0 5rpx;
+}

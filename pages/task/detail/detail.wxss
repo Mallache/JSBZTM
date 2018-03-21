@@ -1,0 +1,43 @@
+/* pages/task/index.wxss */
+@import "../../common/weui.wxss";
+
+.task_confirm{
+  width: 40%;
+  font-size: 20px;
+  background-color:#66cc99;
+  color:white;
+}
+
+.page-section{
+  margin-bottom: 20rpx;
+}
+
+textarea {
+    width: 700rpx;
+    padding: 25rpx 0;
+}
+.textarea-wrp {
+    padding: 0 25rpx;
+    background-color: #fff;
+    font-size: 15px;
+}
+
+.RespPersonShow{
+    padding: 0 25rpx;
+    background-color: #fff;
+    font-size: 15px;
+}
+
+.weui-input {
+  width: auto;
+  height: 2.58823529em;
+  min-height: 2.58823529em;
+  line-height: 2.58823529em;
+}
+.data-section{
+   margin:5rpx;
+   padding: 0 20rpx;
+   font-size: 17px;
+   line-height: 2.41176471;
+   height: 2.58823529em;
+}

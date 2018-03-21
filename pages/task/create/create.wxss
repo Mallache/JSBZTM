@@ -1,0 +1,5 @@
+/* pages/task/index.wxss */
+@import "../../common/weui.wxss";
+@import "../../common/index.wxss";
+@import "../detail/detail.wxss";
+
