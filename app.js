@@ -1,4 +1,5 @@
 const SERVER = require('./utils/leancloud-storage');
+
 SERVER.init({
   appId: 'bKhslx0xHAQFLIJbYl8XAQ3X-gzGzoHsz',
   appKey: 'f6TdxHPLqegnJBsdINgxUoBz',
@@ -25,7 +26,13 @@ App({
 
         }
       }
+
     })
+
+  },
+  globalData: {
+    openId: null,
+
   },
 
 })

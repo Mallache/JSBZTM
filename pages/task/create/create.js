@@ -14,6 +14,7 @@ Page({
     taskDescribe: "",
     taskRespPerson: "",
     taskPlanComplTime: "",
+    openId: "",
   },
 
   //任务名输入框触发事件
@@ -42,91 +43,111 @@ Page({
       taskPlanComplTime: e.detail.value
     })
   },
+  
+
 
   bindConformBtn: function () {
+
+
     var taskName = this.data.taskName;
-    var taskQuery = new SERVER.Query('Task');
-    taskQuery
-      .equalTo('name', taskName)
-      .descending('createdAt')
-      .find()
-      .then((task) =>{
-        wx.showToast({
-          title: '对不起，您已经创建过' + task.name,
-          duration: 1500
-        })
-      });
+
+    
+    console.log(this.data.openId+"openId");
+
     var Task = SERVER.Object.extend('Task');
-        var task = new Task();
-        //task.set("userId", SERVER.User.current().id);
-        task.set('name', taskName);
-        task.set('describe', this.data.taskDescribe);
-        task.set('respPerson', this.data.taskRespPerson);
-        task.set('planComplTime', this.data.taskPlanComplTime);
-        task.save().then(function (task) {
-          console.log('保存成功' + task.id);
-          wx.showToast({
-            title: '保存成功',
-            duration: 1500
+    var task = new Task();
+    //task.set("userId", SERVER.User.current().id);
+    task.set('name', taskName);
+    task.set('describe', this.data.taskDescribe);
+    console.log(this.data.taskRespPerson);
+    task.set('respPerson', this.data.taskRespPerson);
+    console.log(this.data.taskPlanComplTime);
+    task.set('planComplTime', this.data.taskPlanComplTime);
+    console.log(this.data.openId);
+    task.set('openId', this.data.openId);
+
+    task.save().then(function (task) {
+      console.log('保存成功' + task.id);
+      wx.showToast({
+        title: '保存成功',
+        duration: 1500
+      })
+      wx.navigateBack({
+        url: '../dealingTask/index'
+      })
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    console.log('index is onLoad')
+    var user = SERVER.User.current();
+    // 调用小程序 API，得到用户信息
+    wx.getUserInfo({
+      success: ({ userInfo }) => {
+        // 更新当前用户的信息
+        user.set(userInfo).save().then(user => {
+          // 成功，此时可在控制台中看到更新后的用户信息
+          this.setData({
+            openId: user.toJSON().authData.lc_weapp.openid
           })
-          wx.navigateBack({
-            url: '../dealingTask/index'
-          })
-        })
-      },
+          console.log(user.toJSON().username);
+          console.log(user.toJSON().nickName);
 
-      /**
-       * 生命周期函数--监听页面加载
-       */
-      onLoad: function (options) {
-      },
-
-      /**
-       * 生命周期函数--监听页面初次渲染完成
-       */
-      onReady: function () {
-
-      },
-
-      /**
-       * 生命周期函数--监听页面显示
-       */
-      onShow: function () {
-
-      },
-
-      /**
-       * 生命周期函数--监听页面隐藏
-       */
-      onHide: function () {
-
-      },
-
-      /**
-       * 生命周期函数--监听页面卸载
-       */
-      onUnload: function () {
-
-      },
-
-      /**
-       * 页面相关事件处理函数--监听用户下拉动作
-       */
-      onPullDownRefresh: function () {
-
-      },
-
-      /**
-       * 页面上拉触底事件的处理函数
-       */
-      onReachBottom: function () {
-
-      },
-
-      /**
-       * 用户点击右上角分享
-       */
-      onShareAppMessage: function () {
-
+        }).catch(console.error);
       }
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    var user=getApp().globalData.openId
+    console.log(user+"onRedy")
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
 })

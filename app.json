@@ -24,20 +24,20 @@
     "list": [
       {
         "pagePath": "pages/dealingTask/index",
-        "iconPath": "image/dealingTask.png",
+        "iconPath": "image/allTaskHL.png",
         "selectedIconPath": "image/dealingTask.png",
         "text": "待处理"
       },
       {
         "pagePath": "pages/allTask/index",
-        "iconPath": "image/allTask.png",
+        "iconPath": "image/allTaskHL.png",
         "selectedIconPath": "image/allTask.png",
         "text": " 全部"
       },
       {
         "pagePath": "pages/myMenu/index",
-        "iconPath": "image/myMenu.png",
-        "selectedIconPath": "image/myMenu.png",
+        "iconPath": "image/wechat.png",
+        "selectedIconPath": "image/wechatHL.png",
         "text": " 我"
       }
     ]

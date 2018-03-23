@@ -8,6 +8,7 @@ Page({
     userInfo: "",
     logined: false,
     tasks: {},
+    openId:"",
   },
 
   globalData: {
@@ -16,10 +17,10 @@ Page({
 
   //页面初始化start
   onLoad: function () {
-    if (!this.data.logined){
+   /* if (!this.data.logined){
      /* wx.navigateTo({
         url: '../login/index'
-      })*/
+      })
     }
     this.getLoginUserInfor();
     if (!this.data.userInfo) {
@@ -29,7 +30,13 @@ Page({
     wx.setStorage({
       key: 'userInfo',
       data: this.data.userInfo,
+    })*/
+    var user = getApp().globalData.openId
+    console.log(user + "onRedy")
+    this.setData({
+      openId: user
     })
+    
   },//页面初始化end
 
   //获取登录信息
@@ -47,7 +54,7 @@ Page({
   //查询用户待处理的任务
   getTaskByUserId: function () {
     new SERVER.Query('Task')
-      //.equalTo('useName',"XXX")
+      .equalTo('openId',this.data.openId)
       .descending('createdAt')
       .find()
       .then(tasks => {

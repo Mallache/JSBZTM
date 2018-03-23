@@ -1,6 +1,7 @@
 //获取应用实例
 var app = getApp()
 const SERVER = require('../../utils/leancloud-storage');
+const { User } = require('../../utils/leancloud-storage');
 var util = require('../../utils/util.js');
 
 Page({
@@ -11,6 +12,7 @@ Page({
     userPassword: '',
     id_token: '',
     responseData: '',
+    //user:'',
   },
   //登录按钮处理
   bindtapLogin:function(){
@@ -37,6 +39,7 @@ Page({
       .find()
       .then(users => {
         //判定是否已经注册过
+        console.log(users+'测试');
         if(users.count===0){
           wx.showToast({
             title: '请先注册',
@@ -68,12 +71,41 @@ Page({
  
   },
 
-  //注册按钮
-  /*bindtapRegister(){
-    wx.navigateTo({
-      url: '../register/index',
-    })
-  },*/
+ 
+  //微信一键登录按钮
+  bindtapWxLogin(){
+    const user = SERVER.User.current();
+    // 调用小程序 API，得到用户信息
+    wx.getUserInfo({
+      success: ({ userInfo }) => {
+        // 更新当前用户的信息
+        user.set(userInfo).save().then(user => {
+          // 成功，此时可在控制台中看到更新后的用户信息
+      
+         
+        }).catch(console.error);
+      }
+    });
+   
+    SERVER.User.loginWithWeapp().then(user => {
+      console.log(user);
+      app.globalData.openId = user.toJSON().authData.lc_weapp.openid;
+      wx.sets
+      console.log(app.globalData.openId);
+      wx.switchTab({
+        url: '../dealingTask/index',
+        success: function (e) {
+          console.log(e)
+        },
+        fail: function (e) {
+          console.log("失败")
+        }
+      })
+
+    }).catch(console.error);
+
+   
+  },
   
   //输入框事件
   bindinputUserName: function (e) {
@@ -90,13 +122,13 @@ Page({
   },
 
   onLoad: function () {
-    console.log('index is onLoad')
+    
   },
   onShow: function () {
     console.log('index is show')
   },
   onReady: function () {
-    console.log('indx is on ready')
+    
   },
   onHide: function () {
     console.log('index is on hide')

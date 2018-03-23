@@ -8,7 +8,7 @@
     <input type="text" bindinput="bindinputUserName" /> 密码：
     <input type="text" bindinput="bindinputPassword" password="true" />
     <button class='abcBtn' type="primary" bindtap="bindtapLogin">登录</button>
-   <!--- <button class='abcBtn' type="primary" bindtap="bindtapRegister">用户注册</button>-->
+    <button class='abcBtn' type="primary" bindtap="bindtapWxLogin">微信一键登录</button>
   </view>
   <view>
     <template name="body">
