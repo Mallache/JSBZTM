@@ -24,10 +24,37 @@ Page({
           console.log(tasks);
         })
         .catch(console.error);
+
+        
     },
   
   
+  //长按任务名删除
+  bindtapDel: function (e) {
+    wx.showModal({
+      title: '提示',
+      content: '删除任务',
+      success: function (res) {
+        if (res.confirm) {
+          var taskDel = SERVER.Object.createWithoutData('Task', e.target.id);
+          taskDel.destroy().then(function (success) {
+            console.log('删除成功')
+            // 删除成功
 
+          }, function (error) {
+            console.log('删除失败')
+            // 删除失败
+          });
+          console.log('用户点击确定')
+
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+
+    })
+
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

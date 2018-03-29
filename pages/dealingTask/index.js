@@ -9,6 +9,7 @@ Page({
     logined: false,
     tasks: {},
     openId:"",
+    scrollTop: 100,
   },
 
   globalData: {
@@ -36,6 +37,7 @@ Page({
     this.setData({
       openId: user
     })
+    
     
   },//页面初始化end
 
