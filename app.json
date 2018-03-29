@@ -20,7 +20,7 @@
     "color": "#7A7E83",
     "selectedColor": "#3cc51f",
     "borderStyle": "black",
-    "backgroundColor": "#ffffff",
+    "backgroundColor": "#66cc99",
     "list": [
       {
         "pagePath": "pages/dealingTask/index",
